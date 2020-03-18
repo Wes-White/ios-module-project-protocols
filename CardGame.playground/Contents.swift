@@ -187,15 +187,16 @@ class HighLow: CardGame {
         let card2 = deck.drawCard()
         
         print("**** Started a new game of High Low ****")
-        print("Player 1 drew a \(card1.description)")
-        print("Player 2 drew a \(card2.description)")
+        print("|| Player 1 VS Player 2 ||")
+        print("Player 1 drew a \(card1.description), Player 2 drew a \(card2.description)")
+        
         
         if card1.rank == card2.rank {
-            print("Round ends in a tie with \(card1.description)")
+            print("Round ends in a tie with \(card1.description)!!")
         } else if card1.rank.rawValue < card2.rank.rawValue {
-            print("Player 2 wins with a \(card2.description)")
+            print("Player 2 wins with a \(card2.description)!!")
         } else {
-            print("Player 1 wins with a \(card1.description)")
+            print("Player 1 wins with a \(card1.description)!")
         }
     }
 }
