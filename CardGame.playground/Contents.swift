@@ -48,20 +48,24 @@ extension PlayingCard: CustomStringConvertible {
         case .queen:
             return "Queen"
         case .king:
-            return "*Face Card* King"
+            return "King"
         default:
             return "1"
         }
     }
 }
 
-print(PlayingCard.king)
 //: ## Step 3
 //: Create an enum for the suit of a playing card. The values are `hearts`, `diamonds`, `spades`, and `clubs`. Use a raw type of `String` for this enum (this will allow us to get a string version of the enum cases for free, no use of `CustomStringConvertible` required).
+enum Suit: String{
+    case heart = "Heart"
+    case spade = "Spade"
+    case diamond = "Diamond"
+    case club = "**Club"
+}
 
 
-
-
+print(Suit.club.rawValue)
 //: ## Step 4
 //: Using the two enums above, create a `struct` called `Card` to model a single playing card. It should have constant properties for each constituent piece (one for suit and one for rank).
 
