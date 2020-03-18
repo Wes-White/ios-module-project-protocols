@@ -24,13 +24,7 @@ enum Rank:  Int {
 extension Rank: CustomStringConvertible, Comparable {
     
     static func < (lhs: Rank, rhs: Rank) -> Bool {
-        if lhs.rawValue < rhs.rawValue {
-            return lhs.rawValue < rhs.rawValue
-        } else if lhs.rawValue > rhs.rawValue {
-            return lhs.rawValue > rhs.rawValue
-        } else {
-            return true
-        }
+       return  lhs.rawValue < rhs.rawValue
     }
     
     
@@ -97,13 +91,7 @@ struct Card {
 extension Card: CustomStringConvertible, Comparable {
     
     static func < (lhs: Card, rhs: Card) -> Bool {
-        if lhs.rank < rhs.rank {
-            return lhs.rank < rhs.rank
-        } else if lhs.rank > rhs.rank {
-            return lhs.rank > rhs.rank
-        } else {
-            return true
-        }
+        return lhs.rank < rhs.rank
     }
     
     
