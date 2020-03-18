@@ -21,7 +21,18 @@ enum Rank:  Int {
 
 //: ## Step 2
 //: Once you've defined the enum as described above, take a look at this built-in protocol, [CustomStringConvertible](https://developer.apple.com/documentation/swift/customstringconvertible) and make the enum conform to that protocol. Make the face cards return a string of their name, and for the numbered cards, simply have it return that number as a string.
-extension Rank: CustomStringConvertible {
+extension Rank: CustomStringConvertible, Comparable {
+    
+    static func < (lhs: Rank, rhs: Rank) -> Bool {
+        if lhs.rawValue < rhs.rawValue {
+            return lhs.rawValue < rhs.rawValue
+        } else if lhs.rawValue > rhs.rawValue {
+            return lhs.rawValue > rhs.rawValue
+        } else {
+            return true
+        }
+    }
+    
     
     var description: String {
         switch self {
@@ -83,7 +94,18 @@ struct Card {
 }
 //: ## Step 5
 //: Make the card also conform to `CustomStringConvertible`. When turned into a string, a card's value should look something like this, "ace of spades", or "3 of diamonds".
-extension Card: CustomStringConvertible {
+extension Card: CustomStringConvertible, Comparable {
+    
+    static func < (lhs: Card, rhs: Card) -> Bool {
+        if lhs.rank < rhs.rank {
+            return lhs.rank < rhs.rank
+        } else if lhs.rank > rhs.rank {
+            return lhs.rank > rhs.rank
+        } else {
+            return true
+        }
+    }
+    
     
     var description: String {
         return "\(self.rank) of \(self.suit.rawValue)s"
@@ -165,23 +187,40 @@ protocol CardGame {
 
 
 
-//: ## Step 13
-//: Create a protocol for tracking a card game as a delegate called `CardGameDelegate`. It should have two functional requirements:
-//: * a function called `gameDidStart` that takes a `CardGame` as an argument
-//: * a function with the following signature: `game(player1DidDraw card1: Card, player2DidDraw card2: Card)`
-
-
-
 
 //: ## Step 14
 //: Create a class called `HighLow` that conforms to the `CardGame` protocol. It should have an initialized `Deck` as a property, as well as an optional delegate property of type `CardGameDelegate`.
+//Step 13 from read me.
+class HighLow: CardGame {
+    var deck: Deck = Deck()
+    
+    func play() {
+        let card1 = deck.drawCard()
+        let card2 = deck.drawCard()
+        
+        print("Started a new game of High Low")
+        print("Player 1 drew a \(card1.description)")
+        print("Player 2 drew a \(card2.description)")
+        
+        if card1.rank == card2.rank {
+            print("Round ends in a tie with \(card1.description)")
+        } else if card1.rank.rawValue < card2.rank.rawValue {
+            print("Player 2 wins with \(card2.description)")
+        } else {
+            print("Player 1 wins with \(card1.description)")
+        }
+    }
+}
 
+
+var newGame = HighLow()
+newGame.play()
 
 
 
 //: ## Step 15
 //: As part of the protocol conformance, implement a method called `play()`. The method should draw 2 cards from the deck, one for player 1 and one for player 2. These cards will then be compared to see which one is higher. The winning player will be printed along with a description of the winning card. Work will need to be done to the `Suit` and `Rank` types above, so see the next couple steps before continuing with this step.
-
+//Completed above
 
 
 
