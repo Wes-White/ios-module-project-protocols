@@ -55,7 +55,7 @@ extension Rank: CustomStringConvertible, Comparable {
         case .ten:
             return "10"
         case .jack:
-            return "Jace"
+            return "Jack"
         case .queen:
             return "Queen"
         case .king:
@@ -77,7 +77,7 @@ enum Suit: String{
     case heart = "Heart"
     case spade = "Spade"
     case diamond = "Diamond"
-    case club = "**Club"
+    case club = "Club"
     
     static var allSuits: [Suit] {
         get{
@@ -114,7 +114,7 @@ extension Card: CustomStringConvertible, Comparable {
 
 var newCard = Card(suit: Suit.heart, rank: Rank.king)
 
-print(newCard)
+
 //: ## Step 6
 //: Create a `struct` to model a deck of cards. It should be called `Deck` and have an array of `Card` objects as a constant property. A custom `init` function should be created that initializes the array with a card of each rank and suit. You'll want to iterate over all ranks, and then over all suits (this is an example of _nested `for` loops_). See the next 2 steps before you continue with the nested loops.
 struct Deck {
@@ -198,16 +198,16 @@ class HighLow: CardGame {
         let card1 = deck.drawCard()
         let card2 = deck.drawCard()
         
-        print("Started a new game of High Low")
+        print("**** Started a new game of High Low ****")
         print("Player 1 drew a \(card1.description)")
         print("Player 2 drew a \(card2.description)")
         
         if card1.rank == card2.rank {
             print("Round ends in a tie with \(card1.description)")
         } else if card1.rank.rawValue < card2.rank.rawValue {
-            print("Player 2 wins with \(card2.description)")
+            print("Player 2 wins with a \(card2.description)")
         } else {
-            print("Player 1 wins with \(card1.description)")
+            print("Player 1 wins with a \(card1.description)")
         }
     }
 }
@@ -226,20 +226,20 @@ newGame.play()
 
 //: ## Step 16
 //: Take a look at the Swift docs for the [Comparable](https://developer.apple.com/documentation/swift/comparable) protocol. In particular, look at the two functions called `<` and `==`.
-
+//Completed above
 
 
 
 //: ## Step 17
 //: Make the `Rank` type conform to the `Comparable` protocol. Implement the `<` and `==` functions such that they compare the `rawValue` of the `lhs` and `rhs` arguments passed in. This will allow us to compare two rank values with each other and determine whether they are equal, or if not, which one is larger.
-
+//Completed above
 
 
 
 
 //: Step 18
 //: Make the `Card` type conform to the `Comparable` protocol. Implement the `<` and `==` methods such that they compare the ranks of the `lhs` and `rhs` arguments passed in. For the `==` method, compare **both** the rank and the suit.
-
+//Completed above
 
 
 
@@ -249,7 +249,7 @@ newGame.play()
 //: * Ends in a tie, something like, "Round ends in a tie with 3 of clubs."
 //: * Player 1 wins with a higher card, e.g. "Player 1 wins with 8 of hearts."
 //: * Player 2 wins with a higher card, e.g. "Player 2 wins with king of diamonds."
-
+//Completed above
 
 
 //: ## Step 20
